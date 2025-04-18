@@ -5,7 +5,7 @@ import { UserRole } from '@prisma/client'
 import { NextRequest, NextResponse } from 'next/server'
 import { ZodError } from 'zod'
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }): Promise<NextResponse> {
+export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }): Promise<NextResponse> {
 	try {
 		// Проверяем авторизацию
 		const authResult = await verifyAuth(request)
@@ -22,13 +22,15 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 		// Проверяем, является ли пользователь администратором
 		const isAdmin = currentUser.role === UserRole.ADMIN
 
+		// Получаем params
+		const { id } = await context.params
+
 		// Если пользователь не админ и пытается получить данные другого пользователя
-		if (!isAdmin && params.id !== authResult.userId) {
+		if (!isAdmin && id !== authResult.userId) {
 			return NextResponse.json({ error: 'У вас нет прав для просмотра данных другого пользователя' }, { status: 403 })
 		}
 
 		// Получаем пользователя по ID
-		const { id } = await params
 		const user = await userService.getUserById(id)
 		if (!user) {
 			return NextResponse.json({ error: 'Пользователь не найден' }, { status: 404 })
@@ -50,7 +52,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 	}
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }): Promise<NextResponse> {
+export async function PATCH(request: NextRequest, context: { params: Promise<{ id: string }> }): Promise<NextResponse> {
 	try {
 		const authResult = await verifyAuth(request)
 		if (!authResult.success || !authResult.userId) {
@@ -69,8 +71,10 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 		const body = await request.json()
 		const validatedData = updateUserSchema.parse(body)
 
+		// Получаем params
+		const { id } = await context.params
+
 		// Обновляем пользователя с учетом прав доступа
-		const { id } = await params
 		const updatedUser = await userService.updateUser(id, validatedData, authResult.userId, isAdmin)
 
 		// Возвращаем пользователя без пароля
@@ -104,7 +108,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 	}
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }): Promise<NextResponse> {
+export async function DELETE(request: NextRequest, context: { params: Promise<{ id: string }> }): Promise<NextResponse> {
 	try {
 		// Проверяем авторизацию
 		const authResult = await verifyAuth(request)
@@ -121,8 +125,10 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 		// Проверяем, является ли пользователь администратором
 		const isAdmin = currentUser.role === UserRole.ADMIN
 
+		// Получаем params
+		const { id } = await context.params
+
 		// Удаляем пользователя с учетом прав доступа
-		const { id } = await params
 		await userService.deleteUser(id, authResult.userId, isAdmin)
 
 		return NextResponse.json({ message: 'Пользователь успешно удален' }, { status: 200 })
