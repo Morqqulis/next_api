@@ -1,0 +1,53 @@
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+	"email": "admin@admin.com",
+	"password": "admin"
+}
+
+### Register
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+	"email": "test@test.com",
+	"password": "test",
+  "name": "test"
+}
+
+### Get All Users
+GET http://localhost:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
+
+### Get User by ID
+GET http://localhost:3000/api/users/cm9mlm1930005eqe83xpfdm1k
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
+
+### Update User
+PATCH http://localhost:3000/api/users/cm9mlm1930005eqe83xpfdm1k
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
+
+{
+  "name": "test2",
+  "email": "test2@test.com",
+  "password": "test2"
+}
+
+### Delete User
+DELETE http://localhost:3000/api/users/cm9mltz430006eqe8z8pqhn8s
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
+
+
+### Create Admin
+POST http://localhost:3000/api/users/create-admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
+
+{
+  "email": "admin2@admin2.com",
+  "password": "admin2",
+  "name": "admin2",
+  "role": "ADMIN"
+}
+
