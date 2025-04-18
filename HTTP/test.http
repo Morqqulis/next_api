@@ -1,5 +1,5 @@
 ### Login
-POST http://localhost:3000/api/auth/login
+POST https://next-api-ruby.vercel.app/api/auth/login
 Content-Type: application/json
 
 {
@@ -8,25 +8,25 @@ Content-Type: application/json
 }
 
 ### Register
-POST http://localhost:3000/api/auth/register
+POST https://next-api-ruby.vercel.app/api/auth/register
 Content-Type: application/json
 
 {
-	"email": "test@test.com",
-	"password": "test",
-  "name": "test"
+	"email": "test11@test.com",
+	"password": "test11",
+  "name": "test11"
 }
 
 ### Get All Users
-GET http://localhost:3000/api/users
+GET https://next-api-ruby.vercel.app/api/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
 
 ### Get User by ID
-GET http://localhost:3000/api/users/cm9mlm1930005eqe83xpfdm1k
+GET https://next-api-ruby.vercel.app/api/users/cm9mlm1930005eqe83xpfdm1k
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
 
 ### Update User
-PATCH http://localhost:3000/api/users/cm9mlm1930005eqe83xpfdm1k
+PATCH https://next-api-ruby.vercel.app/api/users/cm9mlm1930005eqe83xpfdm1k
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
 
 {
@@ -36,12 +36,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlO
 }
 
 ### Delete User
-DELETE http://localhost:3000/api/users/cm9mltz430006eqe8z8pqhn8s
+DELETE https://next-api-ruby.vercel.app/api/users/cm9mltz430006eqe8z8pqhn8s
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
 
 
 ### Create Admin
-POST http://localhost:3000/api/users/create-admin
+POST https://next-api-ruby.vercel.app/api/users/create-admin
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiJjbTltbDVheGQwMDAzZXFlOGswdWR3cXNlIiwiZXhwIjoxNzQ1MDU1MTc1fQ.mOIGKC96BZ61gohre3vjz9V2sVP2u-SWSkC9qWDvjAc
 
 {
